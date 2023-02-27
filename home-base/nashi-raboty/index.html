@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://dcentr77.ru/xmlrpc.php">
+
+	<script data-cfasync="false" data-no-defer="1">var ewww_webp_supported=!1;function check_webp_feature(A,e){var w;e=void 0!==e?e:function(){},ewww_webp_supported?e(ewww_webp_supported):((w=new Image).onload=function(){ewww_webp_supported=0<w.width&&0<w.height,e&&e(ewww_webp_supported)},w.onerror=function(){e&&e(!1)},w.src="data:image/webp;base64,"+{alpha:"UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA=="}[A])}check_webp_feature("alpha");</script><script data-cfasync="false" data-no-defer="1">var Arrive=function(c,w){"use strict";if(c.MutationObserver&&"undefined"!=typeof HTMLElement){var r,a=0,u=(r=HTMLElement.prototype.matches||HTMLElement.prototype.webkitMatchesSelector||HTMLElement.prototype.mozMatchesSelector||HTMLElement.prototype.msMatchesSelector,{matchesSelector:function(e,t){return e instanceof HTMLElement&&r.call(e,t)},addMethod:function(e,t,r){var a=e[t];e[t]=function(){return r.length==arguments.length?r.apply(this,arguments):"function"==typeof a?a.apply(this,arguments):void 0}},callCallbacks:function(e,t){t&&t.options.onceOnly&&1==t.firedElems.length&&(e=[e[0]]);for(var r,a=0;r=e[a];a++)r&&r.callback&&r.callback.call(r.elem,r.elem);t&&t.options.onceOnly&&1==t.firedElems.length&&t.me.unbindEventWithSelectorAndCallback.call(t.target,t.selector,t.callback)},checkChildNodesRecursively:function(e,t,r,a){for(var i,n=0;i=e[n];n++)r(i,t,a)&&a.push({callback:t.callback,elem:i}),0<i.childNodes.length&&u.checkChildNodesRecursively(i.childNodes,t,r,a)},mergeArrays:function(e,t){var r,a={};for(r in e)e.hasOwnProperty(r)&&(a[r]=e[r]);for(r in t)t.hasOwnProperty(r)&&(a[r]=t[r]);return a},toElementsArray:function(e){return e=void 0!==e&&("number"!=typeof e.length||e===c)?[e]:e}}),e=(l.prototype.addEvent=function(e,t,r,a){a={target:e,selector:t,options:r,callback:a,firedElems:[]};return this._beforeAdding&&this._beforeAdding(a),this._eventsBucket.push(a),a},l.prototype.removeEvent=function(e){for(var t,r=this._eventsBucket.length-1;t=this._eventsBucket[r];r--)e(t)&&(this._beforeRemoving&&this._beforeRemoving(t),(t=this._eventsBucket.splice(r,1))&&t.length&&(t[0].callback=null))},l.prototype.beforeAdding=function(e){this._beforeAdding=e},l.prototype.beforeRemoving=function(e){this._beforeRemoving=e},l),t=function(i,n){var o=new e,l=this,s={fireOnAttributesModification:!1};return o.beforeAdding(function(t){var e=t.target;e!==c.document&&e!==c||(e=document.getElementsByTagName("html")[0]);var r=new MutationObserver(function(e){n.call(this,e,t)}),a=i(t.options);r.observe(e,a),t.observer=r,t.me=l}),o.beforeRemoving(function(e){e.observer.disconnect()}),this.bindEvent=function(e,t,r){t=u.mergeArrays(s,t);for(var a=u.toElementsArray(this),i=0;i<a.length;i++)o.addEvent(a[i],e,t,r)},this.unbindEvent=function(){var r=u.toElementsArray(this);o.removeEvent(function(e){for(var t=0;t<r.length;t++)if(this===w||e.target===r[t])return!0;return!1})},this.unbindEventWithSelectorOrCallback=function(r){var a=u.toElementsArray(this),i=r,e="function"==typeof r?function(e){for(var t=0;t<a.length;t++)if((this===w||e.target===a[t])&&e.callback===i)return!0;return!1}:function(e){for(var t=0;t<a.length;t++)if((this===w||e.target===a[t])&&e.selector===r)return!0;return!1};o.removeEvent(e)},this.unbindEventWithSelectorAndCallback=function(r,a){var i=u.toElementsArray(this);o.removeEvent(function(e){for(var t=0;t<i.length;t++)if((this===w||e.target===i[t])&&e.selector===r&&e.callback===a)return!0;return!1})},this},i=new function(){var s={fireOnAttributesModification:!1,onceOnly:!1,existing:!1};function n(e,t,r){return!(!u.matchesSelector(e,t.selector)||(e._id===w&&(e._id=a++),-1!=t.firedElems.indexOf(e._id)))&&(t.firedElems.push(e._id),!0)}var c=(i=new t(function(e){var t={attributes:!1,childList:!0,subtree:!0};return e.fireOnAttributesModification&&(t.attributes=!0),t},function(e,i){e.forEach(function(e){var t=e.addedNodes,r=e.target,a=[];null!==t&&0<t.length?u.checkChildNodesRecursively(t,i,n,a):"attributes"===e.type&&n(r,i)&&a.push({callback:i.callback,elem:r}),u.callCallbacks(a,i)})})).bindEvent;return i.bindEvent=function(e,t,r){t=void 0===r?(r=t,s):u.mergeArrays(s,t);var a=u.toElementsArray(this);if(t.existing){for(var i=[],n=0;n<a.length;n++)for(var o=a[n].querySelectorAll(e),l=0;l<o.length;l++)i.push({callback:r,elem:o[l]});if(t.onceOnly&&i.length)return r.call(i[0].elem,i[0].elem);setTimeout(u.callCallbacks,1,i)}c.call(this,e,t,r)},i},o=new function(){var a={};function i(e,t){return u.matchesSelector(e,t.selector)}var n=(o=new t(function(){return{childList:!0,subtree:!0}},function(e,r){e.forEach(function(e){var t=e.removedNodes,e=[];null!==t&&0<t.length&&u.checkChildNodesRecursively(t,r,i,e),u.callCallbacks(e,r)})})).bindEvent;return o.bindEvent=function(e,t,r){t=void 0===r?(r=t,a):u.mergeArrays(a,t),n.call(this,e,t,r)},o};d(HTMLElement.prototype),d(NodeList.prototype),d(HTMLCollection.prototype),d(HTMLDocument.prototype),d(Window.prototype);var n={};return s(i,n,"unbindAllArrive"),s(o,n,"unbindAllLeave"),n}function l(){this._eventsBucket=[],this._beforeAdding=null,this._beforeRemoving=null}function s(e,t,r){u.addMethod(t,r,e.unbindEvent),u.addMethod(t,r,e.unbindEventWithSelectorOrCallback),u.addMethod(t,r,e.unbindEventWithSelectorAndCallback)}function d(e){e.arrive=i.bindEvent,s(i,e,"unbindArrive"),e.leave=o.bindEvent,s(o,e,"unbindLeave")}}(window,void 0),ewww_webp_supported=!1;function check_webp_feature(e,t){var r;ewww_webp_supported?t(ewww_webp_supported):((r=new Image).onload=function(){ewww_webp_supported=0<r.width&&0<r.height,t(ewww_webp_supported)},r.onerror=function(){t(!1)},r.src="data:image/webp;base64,"+{alpha:"UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",animation:"UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA"}[e])}function ewwwLoadImages(e){if(e){for(var t=document.querySelectorAll(".batch-image img, .image-wrapper a, .ngg-pro-masonry-item a, .ngg-galleria-offscreen-seo-wrapper a"),r=0,a=t.length;r<a;r++)ewwwAttr(t[r],"data-src",t[r].getAttribute("data-webp")),ewwwAttr(t[r],"data-thumbnail",t[r].getAttribute("data-webp-thumbnail"));for(var i=document.querySelectorAll(".rev_slider ul li"),r=0,a=i.length;r<a;r++){ewwwAttr(i[r],"data-thumb",i[r].getAttribute("data-webp-thumb"));for(var n=1;n<11;)ewwwAttr(i[r],"data-param"+n,i[r].getAttribute("data-webp-param"+n)),n++}for(r=0,a=(i=document.querySelectorAll(".rev_slider img")).length;r<a;r++)ewwwAttr(i[r],"data-lazyload",i[r].getAttribute("data-webp-lazyload"));for(var o=document.querySelectorAll("div.woocommerce-product-gallery__image"),r=0,a=o.length;r<a;r++)ewwwAttr(o[r],"data-thumb",o[r].getAttribute("data-webp-thumb"))}for(var l=document.querySelectorAll("video"),r=0,a=l.length;r<a;r++)ewwwAttr(l[r],"poster",e?l[r].getAttribute("data-poster-webp"):l[r].getAttribute("data-poster-image"));for(var s,c=document.querySelectorAll("img.ewww_webp_lazy_load"),r=0,a=c.length;r<a;r++)e&&(ewwwAttr(c[r],"data-lazy-srcset",c[r].getAttribute("data-lazy-srcset-webp")),ewwwAttr(c[r],"data-srcset",c[r].getAttribute("data-srcset-webp")),ewwwAttr(c[r],"data-lazy-src",c[r].getAttribute("data-lazy-src-webp")),ewwwAttr(c[r],"data-src",c[r].getAttribute("data-src-webp")),ewwwAttr(c[r],"data-orig-file",c[r].getAttribute("data-webp-orig-file")),ewwwAttr(c[r],"data-medium-file",c[r].getAttribute("data-webp-medium-file")),ewwwAttr(c[r],"data-large-file",c[r].getAttribute("data-webp-large-file")),null!=(s=c[r].getAttribute("srcset"))&&!1!==s&&s.includes("R0lGOD")&&ewwwAttr(c[r],"src",c[r].getAttribute("data-lazy-src-webp"))),c[r].className=c[r].className.replace(/\bewww_webp_lazy_load\b/,"");for(var w=document.querySelectorAll(".ewww_webp"),r=0,a=w.length;r<a;r++)e?(ewwwAttr(w[r],"srcset",w[r].getAttribute("data-srcset-webp")),ewwwAttr(w[r],"src",w[r].getAttribute("data-src-webp")),ewwwAttr(w[r],"data-orig-file",w[r].getAttribute("data-webp-orig-file")),ewwwAttr(w[r],"data-medium-file",w[r].getAttribute("data-webp-medium-file")),ewwwAttr(w[r],"data-large-file",w[r].getAttribute("data-webp-large-file")),ewwwAttr(w[r],"data-large_image",w[r].getAttribute("data-webp-large_image")),ewwwAttr(w[r],"data-src",w[r].getAttribute("data-webp-src"))):(ewwwAttr(w[r],"srcset",w[r].getAttribute("data-srcset-img")),ewwwAttr(w[r],"src",w[r].getAttribute("data-src-img"))),w[r].className=w[r].className.replace(/\bewww_webp\b/,"ewww_webp_loaded");window.jQuery&&jQuery.fn.isotope&&jQuery.fn.imagesLoaded&&(jQuery(".fusion-posts-container-infinite").imagesLoaded(function(){jQuery(".fusion-posts-container-infinite").hasClass("isotope")&&jQuery(".fusion-posts-container-infinite").isotope()}),jQuery(".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper").imagesLoaded(function(){jQuery(".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper").isotope()}))}function ewwwWebPInit(e){ewwwLoadImages(e),ewwwNggLoadGalleries(e),document.arrive(".ewww_webp",function(){ewwwLoadImages(e)}),document.arrive(".ewww_webp_lazy_load",function(){ewwwLoadImages(e)}),document.arrive("videos",function(){ewwwLoadImages(e)}),"loading"==document.readyState?document.addEventListener("DOMContentLoaded",ewwwJSONParserInit):("undefined"!=typeof galleries&&ewwwNggParseGalleries(e),ewwwWooParseVariations(e))}function ewwwAttr(e,t,r){null!=r&&!1!==r&&e.setAttribute(t,r)}function ewwwJSONParserInit(){"undefined"!=typeof galleries&&check_webp_feature("alpha",ewwwNggParseGalleries),check_webp_feature("alpha",ewwwWooParseVariations)}function ewwwWooParseVariations(e){if(e)for(var t=document.querySelectorAll("form.variations_form"),r=0,a=t.length;r<a;r++){var i=t[r].getAttribute("data-product_variations"),n=!1;try{for(var o in i=JSON.parse(i))void 0!==i[o]&&void 0!==i[o].image&&(void 0!==i[o].image.src_webp&&(i[o].image.src=i[o].image.src_webp,n=!0),void 0!==i[o].image.srcset_webp&&(i[o].image.srcset=i[o].image.srcset_webp,n=!0),void 0!==i[o].image.full_src_webp&&(i[o].image.full_src=i[o].image.full_src_webp,n=!0),void 0!==i[o].image.gallery_thumbnail_src_webp&&(i[o].image.gallery_thumbnail_src=i[o].image.gallery_thumbnail_src_webp,n=!0),void 0!==i[o].image.thumb_src_webp&&(i[o].image.thumb_src=i[o].image.thumb_src_webp,n=!0));n&&ewwwAttr(t[r],"data-product_variations",JSON.stringify(i))}catch(e){}}}function ewwwNggParseGalleries(e){if(e)for(var t in galleries){var r=galleries[t];galleries[t].images_list=ewwwNggParseImageList(r.images_list)}}function ewwwNggLoadGalleries(e){e&&document.addEventListener("ngg.galleria.themeadded",function(e,t){window.ngg_galleria._create_backup=window.ngg_galleria.create,window.ngg_galleria.create=function(e,t){var r=$(e).data("id");return galleries["gallery_"+r].images_list=ewwwNggParseImageList(galleries["gallery_"+r].images_list),window.ngg_galleria._create_backup(e,t)}})}function ewwwNggParseImageList(e){for(var t in e){var r=e[t];if(void 0!==r["image-webp"]&&(e[t].image=r["image-webp"],delete e[t]["image-webp"]),void 0!==r["thumb-webp"]&&(e[t].thumb=r["thumb-webp"],delete e[t]["thumb-webp"]),void 0!==r.full_image_webp&&(e[t].full_image=r.full_image_webp,delete e[t].full_image_webp),void 0!==r.srcsets)for(var a in r.srcsets)nggSrcset=r.srcsets[a],void 0!==r.srcsets[a+"-webp"]&&(e[t].srcsets[a]=r.srcsets[a+"-webp"],delete e[t].srcsets[a+"-webp"]);if(void 0!==r.full_srcsets)for(var i in r.full_srcsets)nggFSrcset=r.full_srcsets[i],void 0!==r.full_srcsets[i+"-webp"]&&(e[t].full_srcsets[i]=r.full_srcsets[i+"-webp"],delete e[t].full_srcsets[i+"-webp"])}return e}check_webp_feature("alpha",ewwwWebPInit);</script><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v18.7 (Yoast SEO v19.5.1) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Наши работы - Дачный центр</title>
+	<link rel="canonical" href="https://dcentr77.ru/home-base/nashi-raboty/" />
+	<meta property="og:locale" content="ru_RU" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Наши работы" />
+	<meta property="og:url" content="https://dcentr77.ru/home-base/nashi-raboty/" />
+	<meta property="og:site_name" content="Дачный центр" />
+	<meta property="article:modified_time" content="2022-08-18T03:31:44+00:00" />
+	<meta property="og:image" content="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Примерное время для чтения" />
+	<meta name="twitter:data1" content="5 минут" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://dcentr77.ru/home-base/nashi-raboty/","url":"https://dcentr77.ru/home-base/nashi-raboty/","name":"Наши работы - Дачный центр","isPartOf":{"@id":"https://dcentr77.ru/#website"},"primaryImageOfPage":{"@id":"https://dcentr77.ru/home-base/nashi-raboty/#primaryimage"},"image":{"@id":"https://dcentr77.ru/home-base/nashi-raboty/#primaryimage"},"thumbnailUrl":"https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg","datePublished":"2021-08-12T21:17:47+00:00","dateModified":"2022-08-18T03:31:44+00:00","breadcrumb":{"@id":"https://dcentr77.ru/home-base/nashi-raboty/#breadcrumb"},"inLanguage":"ru-RU","potentialAction":[{"@type":"ReadAction","target":["https://dcentr77.ru/home-base/nashi-raboty/"]}]},{"@type":"ImageObject","inLanguage":"ru-RU","@id":"https://dcentr77.ru/home-base/nashi-raboty/#primaryimage","url":"https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg","contentUrl":"https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg","width":665,"height":829},{"@type":"BreadcrumbList","@id":"https://dcentr77.ru/home-base/nashi-raboty/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная страница","item":"https://dcentr77.ru/"},{"@type":"ListItem","position":2,"name":"Главная","item":"https://dcentr77.ru/"},{"@type":"ListItem","position":3,"name":"Наши работы"}]},{"@type":"WebSite","@id":"https://dcentr77.ru/#website","url":"https://dcentr77.ru/","name":"Дачный центр","description":"","publisher":{"@id":"https://dcentr77.ru/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://dcentr77.ru/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"ru-RU"},{"@type":"Organization","@id":"https://dcentr77.ru/#organization","name":"Дачный центр","url":"https://dcentr77.ru/","sameAs":[],"logo":{"@type":"ImageObject","inLanguage":"ru-RU","@id":"https://dcentr77.ru/#/schema/logo/image/","url":"https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png","contentUrl":"https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png","width":99,"height":99,"caption":"Дачный центр"},"image":{"@id":"https://dcentr77.ru/#/schema/logo/image/"}}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Дачный центр &raquo; Лента" href="https://dcentr77.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Дачный центр &raquo; Лента комментариев" href="https://dcentr77.ru/comments/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://dcentr77.ru/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='wc-blocks-vendors-style-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css?ver=1660799542' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='wc-blocks-style-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css?ver=1660799542' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link data-minify="1" rel='stylesheet' id='rs-plugin-settings-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=1660799546' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link data-minify="1" rel='stylesheet' id='js_composer_front-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=1660799542' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='https://dcentr77.ru/wp-content/themes/woodmart/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woodmart-style-css'  href='https://dcentr77.ru/wp-content/themes/woodmart/style.min.css' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='xts-style-header_528910-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/uploads/2022/04/xts-header_528910-1649854873.css?ver=1660799542' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='xts-style-theme_settings_default-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/uploads/2022/08/xts-theme_settings_default-1660792404.css?ver=1660799542' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='child-style-css'  href='https://dcentr77.ru/wp-content/cache/min/1/wp-content/themes/woodmart-child/style.css?ver=1660799542' type='text/css' media='all' />
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-includes/js/jquery/jquery.min.js' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/revslider/public/assets/js/rbtools.min.js' id='tp-tools-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/revslider/public/assets/js/rs6.min.js' id='revmin-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js' id='jquery-blockui-js' defer></script>
+<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u043a\u043e\u0440\u0437\u0438\u043d\u044b","cart_url":"https:\/\/dcentr77.ru\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js' id='wc-add-to-cart-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=1660799542' id='vc_woocommerce-add-to-cart-js-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/device.min.js' id='woodmart-device-js' defer></script>
+<link rel="https://api.w.org/" href="https://dcentr77.ru/wp-json/" /><link rel="alternate" type="application/json" href="https://dcentr77.ru/wp-json/wp/v2/pages/10365" /><link rel="alternate" type="application/json+oembed" href="https://dcentr77.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdcentr77.ru%2Fhome-base%2Fnashi-raboty%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://dcentr77.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdcentr77.ru%2Fhome-base%2Fnashi-raboty%2F&#038;format=xml" />
+<meta name="theme-color" content="">			<link rel="shortcut icon" href="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.jpg">
+			<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.jpg">
+			<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<noscript><style>.lazyload[data-src]{display:none !important;}</style></noscript><style>.lazyload{background-image:none !important;}.lazyload:before{background-image:none !important;}</style><style>.wp-block-gallery.is-cropped .blocks-gallery-item picture{height:100%;width:100%;}</style><meta name="generator" content="Powered by Slider Revolution 6.3.3 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">function setREVStartSize(e){
+			//window.requestAnimationFrame(function() {				 
+				window.RSIW = window.RSIW===undefined ? window.innerWidth : window.RSIW;	
+				window.RSIH = window.RSIH===undefined ? window.innerHeight : window.RSIH;	
+				try {								
+					var pw = document.getElementById(e.c).parentNode.offsetWidth,
+						newh;
+					pw = pw===0 || isNaN(pw) ? window.RSIW : pw;
+					e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
+					e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
+					e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
+					e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
+					e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
+					e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
+					e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);		
+					if(e.layout==="fullscreen" || e.l==="fullscreen") 						
+						newh = Math.max(e.mh,window.RSIH);					
+					else{					
+						e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+						for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];					
+						e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
+						e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+						for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+											
+						var nl = new Array(e.rl.length),
+							ix = 0,						
+							sl;					
+						e.tabw = e.tabhide>=pw ? 0 : e.tabw;
+						e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
+						e.tabh = e.tabhide>=pw ? 0 : e.tabh;
+						e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;					
+						for (var i in e.rl) nl[i] = e.rl[i]<window.RSIW ? 0 : e.rl[i];
+						sl = nl[0];									
+						for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}															
+						var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);					
+						newh =  (e.gh[ix] * m) + (e.tabh + e.thumbh);
+					}				
+					if(window.rs_init_css===undefined) window.rs_init_css = document.head.appendChild(document.createElement("style"));					
+					document.getElementById(e.c).height = newh+"px";
+					window.rs_init_css.innerHTML += "#"+e.c+"_wrapper { height: "+newh+"px }";				
+				} catch(e){
+					console.log("Failure at Presize of Slider:" + e)
+				}					   
+			//});
+		  };</script>
+		<style type="text/css" id="wp-custom-css">
+			.btns-mobile {
+    display: none;
+}
+
+@media (max-width:1000px){
+.btn-whtsapp {
+    width: 100%;
+	}
+ .awooc-custom-order-button {
+    min-height: 60px!important;
+}}
+
+.awooc-custom-order {
+    display: block!important; 
+}		</style>
+		<style>		
+		
+		</style>
+<!--Start VDZ Yandex Metrika Plugin-->
+<!-- Yandex.Metrika counter --><script type="rocketlazyloadscript" data-rocket-type="text/javascript" >(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(82205344, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true, ecommerce:"dataLayer"});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/82205344" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --><!--START ADD EVENTS FROM CF7--><script type="rocketlazyloadscript" data-rocket-type='text/javascript'>document.addEventListener( 'wpcf7submit', function( event ) {
+					  //event.detail.contactFormId;
+					  if(ym){
+				          //console.log(event.detail);
+						  ym(82205344, 'reachGoal', 'VDZ_SEND_CONTACT_FORM_7');
+						  ym(82205344, 'params', {
+						      page_url: window.location.href, 
+						      status: event.detail.status, 
+						      locale: event.detail.contactFormLocale, 
+						      form_id: event.detail.contactFormId, 
+						  });
+					  }
+					}, false );
+				</script><!--END ADD EVENTS FROM CF7-->
+<!--End VDZ Yandex Metrika Plugin-->
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body data-rsssl=1 class="page-template-default page page-id-10365 page-child parent-pageid-57 theme-woodmart woocommerce-no-js wrapper-full-width form-style-square form-border-width-2 categories-accordion-on offcanvas-sidebar-mobile offcanvas-sidebar-tablet notifications-sticky btns-default-flat btns-default-dark btns-default-hover-dark btns-shop-3d btns-shop-light btns-shop-hover-light btns-accent-flat btns-accent-light btns-accent-hover-light wpb-js-composer js-comp-ver-6.6.0 vc_responsive">
+<script data=cfasync="false" data-no-defer="1">if(typeof ewww_webp_supported==="undefined"){var ewww_webp_supported=!1}if(ewww_webp_supported){document.body.classList.add("webp-support")}</script>
+
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
+		
+	<div class="website-wrapper">
+
+		
+			<!-- HEADER -->
+							<header class="whb-header whb-sticky-shadow whb-scroll-slide whb-sticky-clone">
+					<div class="whb-main-header">
+	
+<div class="whb-row whb-top-bar whb-not-sticky-row whb-with-bg whb-without-border whb-color-light whb-flex-flex-middle">
+	<div class="container">
+		<div class="whb-flex-row whb-top-bar-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	
+<div class="whb-text-element reset-mb-10 "><div style="    font-size: 25px;">"ДАЧНЫЙ ЦЕНТР"</div></div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-col-right whb-visible-lg">
+	
+<div class="whb-text-element reset-mb-10 "><strong><span style="color: #ffffff; font-size: 15px;"><a href="tel:+790313686 77">+7 903 136 86 77</a>
+</span></strong></div>
+<div class="whb-space-element " style="width:10px;"></div>
+<div class="whb-text-element reset-mb-10 "><strong><span style="color: #ffffff; font-size: 15px;"><a href="mailto:dcentr7@mail.ru">dcentr7@mail.ru</a></span></strong></div>
+</div>
+<div class="whb-column whb-col-mobile whb-hidden-lg">
+	
+<div class="whb-text-element reset-mb-10 menu-color"><a style="display: block; margin: auto; color: #ffffff; font-size: 15px;" href="tel:+79031368677">ПОЗВОНИТЬ</a></div>
+
+<div class="whb-text-element reset-mb-10 menu-color"><a style="display: block; margin: auto; color: #ffffff; font-size: 15px;" href="https://wa.me/+79096915977">WhatsApp</a></div>
+</div>
+		</div>
+	</div>
+</div>
+
+<div class="whb-row whb-general-header whb-not-sticky-row whb-without-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle">
+	<div class="container">
+		<div class="whb-flex-row whb-general-header-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	<div class="site-logo">
+	<div class="woodmart-logo-wrap switch-logo-enable">
+		<a href="https://dcentr77.ru/" class="woodmart-logo woodmart-main-logo" rel="home">
+			<picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABjAQAAAACnQIM4AAAAAnRSTlMAAHaTzTgAAAAUSURBVDjLY2AYBaNgFIyCUUBbAAAFagABpUJ2PwAAAABJRU5ErkJggg==" alt="Дачный центр" style="max-width: 250px;" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" decoding="async" class="lazyload" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" alt="Дачный центр" style="max-width: 250px;" data-eio="l" /></noscript></picture>		</a>
+								<a href="https://dcentr77.ru/" class="woodmart-logo woodmart-sticky-logo" rel="home">
+				<picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABjAQAAAACnQIM4AAAAAnRSTlMAAHaTzTgAAAAUSURBVDjLY2AYBaNgFIyCUUBbAAAFagABpUJ2PwAAAABJRU5ErkJggg==" alt="Дачный центр" style="max-width: 250px;" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" decoding="async" class="lazyload" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" alt="Дачный центр" style="max-width: 250px;" data-eio="l" /></noscript></picture>			</a>
+			</div>
+</div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-col-right whb-visible-lg">
+				<div class="woodmart-search-form">
+								<form role="search" method="get" class="searchform  has-categories-dropdown search-style-default woodmart-ajax-search" action="https://dcentr77.ru/"  data-thumbnail="1" data-price="1" data-post_type="product" data-count="20" data-sku="0" data-symbols_count="3">
+					<input type="text" class="s" placeholder="Поиск товаров" value="" name="s" />
+					<input type="hidden" name="post_type" value="product">
+								<div class="search-by-category input-dropdown">
+				<div class="input-dropdown-inner woodmart-scroll-content">
+					<input type="hidden" name="product_cat" value="0">
+					<a href="#" data-val="0">Выбрать категорию</a>
+					<div class="list-wrapper woodmart-scroll">
+						<ul class="woodmart-scroll-content">
+							<li style="display:none;"><a href="#" data-val="0">Выбрать категорию</a></li>
+								<li class="cat-item cat-item-208"><a class="pf-value" href="https://dcentr77.ru/product-category/besedki/" data-val="besedki" data-title="Беседки для дачи деревянные" >Беседки для дачи деревянные</a>
+<ul class='children'>
+	<li class="cat-item cat-item-71"><a class="pf-value" href="https://dcentr77.ru/product-category/besedki/besedki-zakrytie/" data-val="besedki-zakrytie" data-title="Беседки закрытые" >Беседки закрытые</a>
+</li>
+	<li class="cat-item cat-item-72"><a class="pf-value" href="https://dcentr77.ru/product-category/besedki/besedki-otkrytye/" data-val="besedki-otkrytye" data-title="Беседки открытые" >Беседки открытые</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-67"><a class="pf-value" href="https://dcentr77.ru/product-category/volery/" data-val="volery" data-title="Вольеры для собак" >Вольеры для собак</a>
+<ul class='children'>
+	<li class="cat-item cat-item-76"><a class="pf-value" href="https://dcentr77.ru/product-category/volery/volery-bolshie/" data-val="volery-bolshie" data-title="Вольеры большие" >Вольеры большие</a>
+</li>
+	<li class="cat-item cat-item-75"><a class="pf-value" href="https://dcentr77.ru/product-category/volery/volery-premium/" data-val="volery-premium" data-title="Вольеры премиум" >Вольеры премиум</a>
+</li>
+	<li class="cat-item cat-item-73"><a class="pf-value" href="https://dcentr77.ru/product-category/volery/volery-standart/" data-val="volery-standart" data-title="Вольеры стандарт" >Вольеры стандарт</a>
+</li>
+	<li class="cat-item cat-item-74"><a class="pf-value" href="https://dcentr77.ru/product-category/volery/uteplennye-volery/" data-val="uteplennye-volery" data-title="Утепленные вольеры" >Утепленные вольеры</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-68"><a class="pf-value" href="https://dcentr77.ru/product-category/tualety/" data-val="tualety" data-title="Дачные туалеты" >Дачные туалеты</a>
+</li>
+	<li class="cat-item cat-item-80"><a class="pf-value" href="https://dcentr77.ru/product-category/hozbloki-dlya-dachi/" data-val="hozbloki-dlya-dachi" data-title="Хозблоки для дачи" >Хозблоки для дачи</a>
+</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+								<button type="submit" class="searchsubmit">
+						Поиск											</button>
+				</form>
+													<div class="search-results-wrapper"><div class="woodmart-scroll"><div class="woodmart-search-results woodmart-scroll-content"></div></div><div class="woodmart-search-loader wd-fill"></div></div>
+							</div>
+		</div>
+<div class="whb-column whb-mobile-left whb-hidden-lg">
+	<div class="woodmart-burger-icon wd-tools-element mobile-nav-icon whb-mobile-nav-icon wd-style-text">
+	<a href="#">
+					<span class="woodmart-burger wd-tools-icon"></span>
+				<span class="woodmart-burger-label wd-tools-text">Меню</span>
+	</a>
+</div><!--END MOBILE-NAV-ICON--></div>
+<div class="whb-column whb-mobile-center whb-hidden-lg">
+	<div class="site-logo">
+	<div class="woodmart-logo-wrap switch-logo-enable">
+		<a href="https://dcentr77.ru/" class="woodmart-logo woodmart-main-logo" rel="home">
+			<picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABjAQAAAACnQIM4AAAAAnRSTlMAAHaTzTgAAAAUSURBVDjLY2AYBaNgFIyCUUBbAAAFagABpUJ2PwAAAABJRU5ErkJggg==" alt="Дачный центр" style="max-width: 41px;" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" decoding="async" class="lazyload" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" alt="Дачный центр" style="max-width: 41px;" data-eio="l" /></noscript></picture>		</a>
+								<a href="https://dcentr77.ru/" class="woodmart-logo woodmart-sticky-logo" rel="home">
+				<picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABjAQAAAACnQIM4AAAAAnRSTlMAAHaTzTgAAAAUSURBVDjLY2AYBaNgFIyCUUBbAAAFagABpUJ2PwAAAABJRU5ErkJggg==" alt="Дачный центр" style="max-width: 40px;" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" decoding="async" class="lazyload" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/809242112_w200_h100_dachnyj-tsentr.png" alt="Дачный центр" style="max-width: 40px;" data-eio="l" /></noscript></picture>			</a>
+			</div>
+</div>
+</div>
+<div class="whb-column whb-mobile-right whb-hidden-lg whb-empty-column">
+	</div>
+		</div>
+	</div>
+</div>
+
+<div class="whb-row whb-header-bottom whb-not-sticky-row whb-without-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle whb-hidden-mobile">
+	<div class="container">
+		<div class="whb-flex-row whb-header-bottom-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	
+<div class="header-categories-nav show-on-hover whb-wjlcubfdmlq3d7jvmt23" role="navigation">
+	<div class="header-categories-nav-wrap">
+		<span class="menu-opener color-scheme-light">
+							<span class="woodmart-burger"></span>
+			
+			<span class="menu-open-label">
+				Наш каталог			</span>
+			<span class="arrow-opener"></span>
+		</span>
+		<div class="categories-menu-dropdown vertical-navigation woodmart-navigation">
+			<div class="menu-categories-container"><ul id="menu-categories" class="menu wd-cat-nav"><li id="menu-item-10457" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-10457 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/product-category/besedki/" class="woodmart-nav-link"><picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/arbor.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQAAAACCEkxzAAAAAnRSTlMAAHaTzTgAAAAPSURBVCjPY2AYBaOAfAAAAkAAAYzFq3cAAAAASUVORK5CYII=" alt="Беседки для дачи деревянные"  class="category-icon lazyload" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/arbor.png" decoding="async" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/arbor.png" alt="Беседки для дачи деревянные"  class="category-icon" data-eio="l" /></noscript></picture><span class="nav-link-text">Беседки для дачи деревянные</span></a></li>
+<li id="menu-item-7102" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7102 item-level-0 menu-item-design-full-width menu-mega-dropdown item-event-hover"><a href="https://dcentr77.ru/product-category/volery/" class="woodmart-nav-link"><picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/cage.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQAAAACCEkxzAAAAAnRSTlMAAHaTzTgAAAAPSURBVCjPY2AYBaOAfAAAAkAAAYzFq3cAAAAASUVORK5CYII=" alt="Вольеры для собак"  class="category-icon lazyload" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/cage.png" decoding="async" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/cage.png" alt="Вольеры для собак"  class="category-icon" data-eio="l" /></noscript></picture><span class="nav-link-text">Вольеры для собак</span></a></li>
+<li id="menu-item-7103" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7103 item-level-0 menu-item-design-full-width menu-mega-dropdown item-event-hover"><a href="https://dcentr77.ru/product-category/tualety/" class="woodmart-nav-link"><picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/shed-1.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQAAAACCEkxzAAAAAnRSTlMAAHaTzTgAAAAPSURBVCjPY2AYBaOAfAAAAkAAAYzFq3cAAAAASUVORK5CYII=" alt="Дачные туалеты"  class="category-icon lazyload" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/shed-1.png" decoding="async" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/shed-1.png" alt="Дачные туалеты"  class="category-icon" data-eio="l" /></noscript></picture><span class="nav-link-text">Дачные туалеты</span></a></li>
+<li id="menu-item-10860" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-10860 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/product-category/hozbloki-dlya-dachi/" class="woodmart-nav-link"><picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/04/shed.png.webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQAAAACCEkxzAAAAAnRSTlMAAHaTzTgAAAAPSURBVCjPY2AYBaOAfAAAAkAAAYzFq3cAAAAASUVORK5CYII=" alt="Хозблоки для дачи"  class="category-icon lazyload" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/04/shed.png" decoding="async" /><noscript><img src="https://dcentr77.ru/wp-content/uploads/2021/04/shed.png" alt="Хозблоки для дачи"  class="category-icon" data-eio="l" /></noscript></picture><span class="nav-link-text">Хозблоки для дачи</span></a></li>
+</ul></div>		</div>
+	</div>
+</div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg">
+	<div class="whb-navigation whb-primary-menu main-nav site-navigation woodmart-navigation menu-left navigation-style-default" role="navigation">
+	<div class="menu-osnovnoe-container"><ul id="menu-osnovnoe" class="menu"><li id="menu-item-7087" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor current-page-parent menu-item-7087 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/" class="woodmart-nav-link"><span class="nav-link-text">Главная</span></a></li>
+<li id="menu-item-7086" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7086 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/shop/" class="woodmart-nav-link"><span class="nav-link-text">Каталог</span></a></li>
+<li id="menu-item-10367" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10365 current_page_item menu-item-10367 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/home-base/nashi-raboty/" class="woodmart-nav-link"><span class="nav-link-text">Наши работы</span></a></li>
+<li id="menu-item-7559" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7559 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/o-nas/" class="woodmart-nav-link"><span class="nav-link-text">О нас</span></a>
+<div class="sub-menu-dropdown color-scheme-dark">
+
+<div class="container">
+
+<ul class="sub-menu color-scheme-dark">
+	<li id="menu-item-10364" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10364 item-level-1"><a href="https://dcentr77.ru/pochemu-nas-vybirajut/" class="woodmart-nav-link"><span class="nav-link-text">Почему нас выбирают</span></a></li>
+</ul>
+</div>
+</div>
+</li>
+<li id="menu-item-7560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7560 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/dostavka-i-oplata/" class="woodmart-nav-link"><span class="nav-link-text">Доставка и оплата</span></a></li>
+<li id="menu-item-7558" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7558 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/kontakty/" class="woodmart-nav-link"><span class="nav-link-text">Контакты</span></a></li>
+<li id="menu-item-10973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10973 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://dcentr77.ru/poleznye-stati/" class="woodmart-nav-link"><span class="nav-link-text">Cтатьи</span></a></li>
+</ul></div></div><!--END MAIN-NAV-->
+</div>
+<div class="whb-column whb-col-right whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-col-mobile whb-hidden-lg whb-empty-column">
+	</div>
+		</div>
+	</div>
+</div>
+</div>
+				</header><!--END MAIN HEADER-->
+			
+								<div class="main-page-wrapper">
+		
+						<div class="page-title page-title-default title-size-small title-design-disable color-scheme-light" style="">
+					<div class="container">
+						<header class="entry-header">
+																							<div class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#"><a href="https://dcentr77.ru/" rel="v:url" property="v:title">Главная</a> &raquo; <span class="current">Наши работы</span></div><!-- .breadcrumbs -->													</header><!-- .entry-header -->
+					</div>
+				</div>
+			
+		<!-- MAIN CONTENT AREA -->
+				<div class="container">
+			<div class="row content-layout-wrapper align-items-start">
+		
+		
+
+
+<div class="site-content col-lg-9 col-12 col-md-9" role="main">
+
+								<article id="post-10365" class="post-10365 page type-page status-publish hentry">
+
+					<div class="entry-content">
+						<div class="my-page-title"><h1 class="wd-entities-title title post-title">Наши работы</h1></div>						
+<figure class="wp-container-2 wp-block-gallery-1 wp-block-gallery columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 665px) 100vw, 665px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg.webp 665w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1-241x300.jpeg.webp 241w"><img width="665" height="829" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApkAAAM9AQAAAAD/LlWzAAAAAnRSTlMAAHaTzTgAAABbSURBVHja7cGBAAAAAMOg+VPf4ARVAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwDRNQAAH9p7HKAAAAAElFTkSuQmCC" alt="Наши работы" data-id="10429" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-1/" class="wp-image-10429 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg 665w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1-241x300.jpeg 241w" data-sizes="auto" /><noscript><img width="665" height="829" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg" alt="Наши работы" data-id="10429" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-1/" class="wp-image-10429" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1.jpeg 665w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-1-241x300.jpeg 241w" sizes="(max-width: 665px) 100vw, 665px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 1024px) 100vw, 1024px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-1024x828.jpeg.webp 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-300x242.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-768x621.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2.jpeg.webp 1020w"><img width="1024" height="828" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAM8AQAAAADhee92AAAAAnRSTlMAAHaTzTgAAAB9SURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G6hSwABfQ7X0gAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10430" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-2/" class="wp-image-10430 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-1024x828.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-1024x828.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-300x242.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-768x621.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2.jpeg 1020w" data-sizes="auto" /><noscript><img width="1024" height="828" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-1024x828.jpeg" alt="Наши работы" data-id="10430" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-2/" class="wp-image-10430" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-1024x828.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-300x242.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2-768x621.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-2.jpeg 1020w" sizes="(max-width: 1024px) 100vw, 1024px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 495px) 100vw, 495px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg.webp 495w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3-300x268.jpeg.webp 300w"><img width="495" height="442" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAe8AAAG6AQAAAAAJsfMkAAAAAnRSTlMAAHaTzTgAAAAxSURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABfBmzGAAE9/qftAAAAAElFTkSuQmCC" alt="Наши работы" data-id="10431" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-3/" class="wp-image-10431 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg 495w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3-300x268.jpeg 300w" data-sizes="auto" /><noscript><img width="495" height="442" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg" alt="Наши работы" data-id="10431" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42-3/" class="wp-image-10431" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3.jpeg 495w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-3-300x268.jpeg 300w" sizes="(max-width: 495px) 100vw, 495px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 954px) 100vw, 954px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-954x1024.jpeg.webp 954w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-280x300.jpeg.webp 280w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-768x824.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42.jpeg.webp 951w"><img width="954" height="1024" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7oAAAQAAQAAAADniRhdAAAAAnRSTlMAAHaTzTgAAACPSURBVHja7cExAQAAAMKg9U9tCF+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgPkDwABP+FKlQAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10432" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42/" class="wp-image-10432 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-954x1024.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-954x1024.jpeg 954w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-280x300.jpeg 280w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-768x824.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42.jpeg 951w" data-sizes="auto" /><noscript><img width="954" height="1024" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-954x1024.jpeg" alt="Наши работы" data-id="10432" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-42/" class="wp-image-10432" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-954x1024.jpeg 954w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-280x300.jpeg 280w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42-768x824.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.42.jpeg 951w" sizes="(max-width: 954px) 100vw, 954px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 555px) 100vw, 555px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg.webp 555w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-300x300.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-150x150.jpeg.webp 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-100x100.jpeg.webp 100w"><img width="555" height="556" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAisAAAIsAQAAAAAb0NQ9AAAAAnRSTlMAAHaTzTgAAAA7SURBVHja7cEBAQAAAICQ/q/uCAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAGaNAABvkL7qgAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10433" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-1/" class="wp-image-10433 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg 555w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-100x100.jpeg 100w" data-sizes="auto" /><noscript><img width="555" height="556" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg" alt="Наши работы" data-id="10433" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-1/" class="wp-image-10433" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1.jpeg 555w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-1-100x100.jpeg 100w" sizes="(max-width: 555px) 100vw, 555px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 670px) 100vw, 670px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg.webp 670w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2-300x264.jpeg.webp 300w"><img width="670" height="589" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAp4AAAJNAQAAAACwp0i/AAAAAnRSTlMAAHaTzTgAAABHSURBVHja7cExAQAAAMKg9U/tawigAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AzDkQABugZUZwAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10434" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-2/" class="wp-image-10434 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg 670w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2-300x264.jpeg 300w" data-sizes="auto" /><noscript><img width="670" height="589" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg" alt="Наши работы" data-id="10434" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-2/" class="wp-image-10434" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2.jpeg 670w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-2-300x264.jpeg 300w" sizes="(max-width: 670px) 100vw, 670px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 589px) 100vw, 589px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg.webp 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3-300x294.jpeg.webp 300w"><img width="589" height="577" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk0AAAJBAQAAAABzQ7yOAAAAAnRSTlMAAHaTzTgAAABBSURBVHja7cEBDQAAAMKg909tDjegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAYwOpCwAB/DyLZAAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10435" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-3/" class="wp-image-10435 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3-300x294.jpeg 300w" data-sizes="auto" /><noscript><img width="589" height="577" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg" alt="Наши работы" data-id="10435" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-3/" class="wp-image-10435" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3.jpeg 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-3-300x294.jpeg 300w" sizes="(max-width: 589px) 100vw, 589px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 833px) 100vw, 833px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg.webp 833w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-300x279.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-768x715.jpeg.webp 768w"><img width="833" height="775" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0EAAAMHAQAAAADXh2EFAAAAAnRSTlMAAHaTzTgAAABmSURBVHja7cExAQAAAMKg9U9tCy+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOBlQPUAASQhKMIAAAAASUVORK5CYII=" alt="Наши работы" data-id="10436" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-4/" class="wp-image-10436 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg 833w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-300x279.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-768x715.jpeg 768w" data-sizes="auto" /><noscript><img width="833" height="775" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg" alt="Наши работы" data-id="10436" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43-4/" class="wp-image-10436" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4.jpeg 833w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-300x279.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-4-768x715.jpeg 768w" sizes="(max-width: 833px) 100vw, 833px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 844px) 100vw, 844px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg.webp 844w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-260x300.jpeg.webp 260w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-768x886.jpeg.webp 768w"><img width="844" height="974" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0wAAAPOAQAAAAAUnqXJAAAAAnRSTlMAAHaTzTgAAAB7SURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH8GlykAAR3J/A4AAAAASUVORK5CYII=" alt="Наши работы" data-id="10437" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43/" class="wp-image-10437 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg 844w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-260x300.jpeg 260w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-768x886.jpeg 768w" data-sizes="auto" /><noscript><img width="844" height="974" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg" alt="Наши работы" data-id="10437" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-43/" class="wp-image-10437" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43.jpeg 844w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-260x300.jpeg 260w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.43-768x886.jpeg 768w" sizes="(max-width: 844px) 100vw, 844px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source   type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-1.jpeg.webp"><img width="290" height="253" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAAD9AQAAAAAw2kdVAAAAAnRSTlMAAHaTzTgAAAAgSURBVGje7cExAQAAAMKg9U9tCF+gAAAAAAAAAAAA+A0ljgABSN68jgAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10438" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-1/" class="wp-image-10438 lazyload" data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-1.jpeg" decoding="async" /><noscript><img width="290" height="253" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-1.jpeg" alt="Наши работы" data-id="10438" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-1/" class="wp-image-10438" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 1024px) 100vw, 1024px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1024x821.jpeg.webp 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-300x241.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-768x616.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1200x963.jpeg.webp 1200w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2.jpeg.webp 1020w"><img width="1024" height="821" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAM1AQAAAADGdr6+AAAAAnRSTlMAAHaTzTgAAAB9SURBVHja7cExAQAAAMKg9U9tDB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4GydxAABLPCdggAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10439" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-2/" class="wp-image-10439 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1024x821.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1024x821.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-300x241.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-768x616.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1200x963.jpeg 1200w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2.jpeg 1020w" data-sizes="auto" /><noscript><img width="1024" height="821" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1024x821.jpeg" alt="Наши работы" data-id="10439" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-2/" class="wp-image-10439" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1024x821.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-300x241.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-768x616.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2-1200x963.jpeg 1200w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-2.jpeg 1020w" sizes="(max-width: 1024px) 100vw, 1024px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 1024px) 100vw, 1024px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-1024x768.jpeg.webp 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-300x225.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-768x576.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3.jpeg.webp 1020w"><img width="1024" height="768" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAMAAQAAAACSwSigAAAAAnRSTlMAAHaTzTgAAAB2SURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvBoMPAAHlAN1UAAAAAElFTkSuQmCC" alt="Наши работы" data-id="10440" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-3/" class="wp-image-10440 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-1024x768.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-1024x768.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-300x225.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-768x576.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3.jpeg 1020w" data-sizes="auto" /><noscript><img width="1024" height="768" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-1024x768.jpeg" alt="Наши работы" data-id="10440" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-3/" class="wp-image-10440" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-1024x768.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-300x225.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3-768x576.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-3.jpeg 1020w" sizes="(max-width: 1024px) 100vw, 1024px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 541px) 100vw, 541px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg.webp 541w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4-300x275.jpeg.webp 300w"><img width="541" height="496" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAh0AAAHwAQAAAAAqKeCLAAAAAnRSTlMAAHaTzTgAAAA4SURBVHja7cEBDQAAAMKg909tDjegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgyFsAABBvRbLQAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10441" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-4/" class="wp-image-10441 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg 541w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4-300x275.jpeg 300w" data-sizes="auto" /><noscript><img width="541" height="496" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg" alt="Наши работы" data-id="10441" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44-4/" class="wp-image-10441" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4.jpeg 541w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-4-300x275.jpeg 300w" sizes="(max-width: 541px) 100vw, 541px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 960px) 100vw, 960px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg.webp 960w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-300x289.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-768x740.jpeg.webp 768w"><img width="960" height="925" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAAOdAQAAAABivTYfAAAAAnRSTlMAAHaTzTgAAACDSURBVHja7cEBDQAAAMKg909tDwcUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdwa1RAABkwv+VwAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10442" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44/" class="wp-image-10442 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg 960w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-300x289.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-768x740.jpeg 768w" data-sizes="auto" /><noscript><img width="960" height="925" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg" alt="Наши работы" data-id="10442" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-44/" class="wp-image-10442" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44.jpeg 960w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-300x289.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.44-768x740.jpeg 768w" sizes="(max-width: 960px) 100vw, 960px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 587px) 100vw, 587px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg.webp 587w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-300x300.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-150x150.jpeg.webp 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-100x100.jpeg.webp 100w"><img width="587" height="587" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAksAAAJLAQAAAADfxu+vAAAAAnRSTlMAAHaTzTgAAABCSURBVHja7cEBDQAAAMKg909tDjegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4MAAq/kAAQHNwoIAAAAASUVORK5CYII=" alt="Наши работы" data-id="10443" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-1/" class="wp-image-10443 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg 587w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-100x100.jpeg 100w" data-sizes="auto" /><noscript><img width="587" height="587" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg" alt="Наши работы" data-id="10443" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-1/" class="wp-image-10443" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1.jpeg 587w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-1-100x100.jpeg 100w" sizes="(max-width: 587px) 100vw, 587px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 718px) 100vw, 718px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg.webp 718w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2-300x284.jpeg.webp 300w"><img width="718" height="679" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs4AAAKnAQAAAAC+bPYTAAAAAnRSTlMAAHaTzTgAAABTSURBVHja7cExAQAAAMKg9U9tDB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAqwHxXQABmmkIyAAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10444" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-2/" class="wp-image-10444 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg 718w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2-300x284.jpeg 300w" data-sizes="auto" /><noscript><img width="718" height="679" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg" alt="Наши работы" data-id="10444" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-2/" class="wp-image-10444" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2.jpeg 718w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-2-300x284.jpeg 300w" sizes="(max-width: 718px) 100vw, 718px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 919px) 100vw, 919px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg.webp 919w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-300x300.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-150x150.jpeg.webp 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-768x769.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-600x600.jpeg.webp 600w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-100x100.jpeg.webp 100w"><img width="919" height="920" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA5cAAAOYAQAAAABpuDqdAAAAAnRSTlMAAHaTzTgAAAB+SURBVHja7cEBDQAAAMKg909tDjegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgwoO8AAaCBLL8AAAAASUVORK5CYII=" alt="Наши работы" data-id="10445" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-3/" class="wp-image-10445 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg 919w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-768x769.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-600x600.jpeg 600w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-100x100.jpeg 100w" data-sizes="auto" /><noscript><img width="919" height="920" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg" alt="Наши работы" data-id="10445" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-3/" class="wp-image-10445" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3.jpeg 919w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-768x769.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-600x600.jpeg 600w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-3-100x100.jpeg 100w" sizes="(max-width: 919px) 100vw, 919px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 589px) 100vw, 589px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg.webp 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-300x300.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-150x150.jpeg.webp 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-100x100.jpeg.webp 100w"><img width="589" height="590" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk0AAAJOAQAAAACCFQ5bAAAAAnRSTlMAAHaTzTgAAABCSURBVHja7cExAQAAAMKg9U9tDB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgL8BrNoAAdCZ/AUAAAAASUVORK5CYII=" alt="Наши работы" data-id="10446" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-4/" class="wp-image-10446 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-100x100.jpeg 100w" data-sizes="auto" /><noscript><img width="589" height="590" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg" alt="Наши работы" data-id="10446" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-4/" class="wp-image-10446" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4.jpeg 589w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-300x300.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-150x150.jpeg 150w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-4-100x100.jpeg 100w" sizes="(max-width: 589px) 100vw, 589px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 1024px) 100vw, 1024px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-1024x818.jpeg.webp 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-300x240.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-768x613.jpeg.webp 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5.jpeg.webp 1020w"><img width="1024" height="818" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAMyAQAAAADbc44GAAAAAnRSTlMAAHaTzTgAAAB8SURBVHja7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8G5xBAAHVKJ68AAAAAElFTkSuQmCC" alt="Наши работы" data-id="10447" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-5/" class="wp-image-10447 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-1024x818.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-1024x818.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-300x240.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-768x613.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5.jpeg 1020w" data-sizes="auto" /><noscript><img width="1024" height="818" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-1024x818.jpeg" alt="Наши работы" data-id="10447" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45-5/" class="wp-image-10447" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-1024x818.jpeg 1024w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-300x240.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5-768x613.jpeg 768w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-5.jpeg 1020w" sizes="(max-width: 1024px) 100vw, 1024px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 562px) 100vw, 562px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg.webp 562w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-300x294.jpeg.webp 300w"><img width="562" height="550" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjIAAAImAQAAAABh8F15AAAAAnRSTlMAAHaTzTgAAAA9SURBVHja7cExAQAAAMKg9U9tDB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GpqwAAEjOONjAAAAAElFTkSuQmCC" alt="Наши работы" data-id="10448" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45/" class="wp-image-10448 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg 562w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-300x294.jpeg 300w" data-sizes="auto" /><noscript><img width="562" height="550" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg" alt="Наши работы" data-id="10448" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-45/" class="wp-image-10448" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45.jpeg 562w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.45-300x294.jpeg 300w" sizes="(max-width: 562px) 100vw, 562px" data-eio="l" /></noscript></picture></figure></li><li class="blocks-gallery-item"><figure><picture><source  sizes='(max-width: 959px) 100vw, 959px' type='image/webp' data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg.webp 959w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-300x289.jpeg.webp 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-768x740.jpeg.webp 768w"><img width="959" height="924" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA78AAAOcAQAAAACuozuvAAAAAnRSTlMAAHaTzTgAAACDSURBVHja7cExAQAAAMKg9U9tCj+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBm0ywABiC8UgwAAAABJRU5ErkJggg==" alt="Наши работы" data-id="10449" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-46/" class="wp-image-10449 lazyload"   data-eio="p" data-src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg" decoding="async" data-srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg 959w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-300x289.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-768x740.jpeg 768w" data-sizes="auto" /><noscript><img width="959" height="924" src="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg" alt="Наши работы" data-id="10449" data-full-url="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg" data-link="https://dcentr77.ru/nashi-raboty/whatsapp-image-2021-09-19-at-11-19-46/" class="wp-image-10449" srcset="https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46.jpeg 959w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-300x289.jpeg 300w, https://dcentr77.ru/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-19-at-11.19.46-768x740.jpeg 768w" sizes="(max-width: 959px) 100vw, 959px" data-eio="l" /></noscript></picture></figure></li></ul></figure>
+											</div>
+
+					
+				</article><!-- #post -->
+
+				
+		
+</div><!-- .site-content -->
+
+
+<aside class="sidebar-container col-lg-3 col-md-3 col-12 order-last order-md-first sidebar-left area-sidebar-1" role="complementary">
+	<div class="widget-heading">
+		<a href="#" class="close-side-widget wd-cross-button wd-with-text-left">закрыть</a>
+	</div>
+	<div class="sidebar-inner woodmart-sidebar-scroll">
+		<div class="widget-area woodmart-sidebar-content">
+						<div id="custom_html-2" class="widget_text woodmart-widget widget sidebar-widget widget_custom_html"><h5 class="widget-title">Контакты</h5><div class="textwidget custom-html-widget"><p><strong>Компания:</strong><br>
+«ДАЧНЫЙ ЦЕНТР»</p>
+<p><strong>Адрес:</strong><br>
+	Россия, Московская область, Москва</p>
+<p><strong>Телефон:</strong><br>
+	+7(909)691-59-77</p>
+<p><strong>Email:</strong><br>
+		dcentr7@mail.ru</p></div></div><div id="custom_html-3" class="widget_text woodmart-widget widget sidebar-widget widget_custom_html"><h5 class="widget-title">График работы</h5><div class="textwidget custom-html-widget"><table>
+<tbody>
+<tr>
+<td>Понедельник</td>
+<td>09:00 — 20:00</td>
+</tr>
+<tr>
+<td>Вторник</td>
+<td>09:00 — 20:00</td>
+</tr>
+<tr>
+<td>Среда</td>
+<td>09:00 — 20:00</td>
+</tr>
+<tr>
+<td>Четверг</td>
+<td>09:00 — 20:00</td>
+</tr>
+<tr>
+<td>Пятница</td>
+<td>09:00 — 20:00</td>
+</tr>
+<tr>
+<td>Суббота</td>
+<td>09:00 — 19:00</td>
+</tr>
+<tr>
+<td>Воскресенье</td>
+<td>10:00 — 19:00</td>
+</tr>
+</tbody>
+<style>
+table td {padding: 5px 0; border: none;}</style>
+</table></div></div><div id="woodmart-recent-posts-13" class="woodmart-widget widget sidebar-widget woodmart-recent-posts"><h5 class="widget-title">Новости</h5>							<ul class="woodmart-recent-posts-list">
+											<li>
+																								<a class="recent-posts-thumbnail" href="https://dcentr77.ru/stati/pravila-ekspluatacii-ulichnogo-tualeta-na-dache/"  rel="bookmark">
+										<img class="attachment-large wp-post-image  lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtAQAAAAASYd83AAAAAnRSTlMAAHaTzTgAAAANSURBVBjTY2AYBWQCAAE7AAEVTFJqAAAAAElFTkSuQmCC" width="45" height="45" alt="Дачный туалет" title="Дачный туалет" data-src="https://dcentr77.ru/wp-content/uploads/2022/07/Dachnyj-tualet-45x45.jpg" decoding="async" /><noscript><img class="attachment-large wp-post-image " src="https://dcentr77.ru/wp-content/uploads/2022/07/Dachnyj-tualet-45x45.jpg" width="45" height="45" alt="Дачный туалет" title="Дачный туалет" data-eio="l" /></noscript>									</a>
+																					
+							<div class="recent-posts-info">
+								<h5 class="entry-title"><a href="https://dcentr77.ru/stati/pravila-ekspluatacii-ulichnogo-tualeta-na-dache/" title="Постоянная ссылка к Правила эксплуатации уличного туалета на даче" rel="bookmark">Правила эксплуатации уличного туалета на даче</a></h5>
+
+																										<time class="recent-posts-time" datetime="2022-07-22T12:08:34+00:00">22 июля, 2022</time>
+								
+															</div>
+						</li>
+
+											<li>
+																								<a class="recent-posts-thumbnail" href="https://dcentr77.ru/stati/otlichiya-letnego-i-zimnego-volera-preimushhestva-i-nedostatki/"  rel="bookmark">
+										<img class="attachment-large wp-post-image  lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtAQAAAAASYd83AAAAAnRSTlMAAHaTzTgAAAANSURBVBjTY2AYBWQCAAE7AAEVTFJqAAAAAElFTkSuQmCC" width="45" height="45" alt="Вольер" title="Вольер" data-src="https://dcentr77.ru/wp-content/uploads/2022/07/Voler-45x45.jpg" decoding="async" /><noscript><img class="attachment-large wp-post-image " src="https://dcentr77.ru/wp-content/uploads/2022/07/Voler-45x45.jpg" width="45" height="45" alt="Вольер" title="Вольер" data-eio="l" /></noscript>									</a>
+																					
+							<div class="recent-posts-info">
+								<h5 class="entry-title"><a href="https://dcentr77.ru/stati/otlichiya-letnego-i-zimnego-volera-preimushhestva-i-nedostatki/" title="Постоянная ссылка к Отличия летнего и зимнего вольера. Преимущества и недостатки" rel="bookmark">Отличия летнего и зимнего вольера. Преимущества и недостатки</a></h5>
+
+																										<time class="recent-posts-time" datetime="2022-07-22T11:53:27+00:00">22 июля, 2022</time>
+								
+															</div>
+						</li>
+
+											<li>
+																								<a class="recent-posts-thumbnail" href="https://dcentr77.ru/stati/ekspluatacionnyj-resurs-dachnyh-hozblokov-i-bytovok/"  rel="bookmark">
+										<img class="attachment-large wp-post-image  lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtAQAAAAASYd83AAAAAnRSTlMAAHaTzTgAAAANSURBVBjTY2AYBWQCAAE7AAEVTFJqAAAAAElFTkSuQmCC" width="45" height="45" alt="Хозблок" title="Хозблок" data-src="https://dcentr77.ru/wp-content/uploads/2022/07/Hozblok-45x45.jpg" decoding="async" /><noscript><img class="attachment-large wp-post-image " src="https://dcentr77.ru/wp-content/uploads/2022/07/Hozblok-45x45.jpg" width="45" height="45" alt="Хозблок" title="Хозблок" data-eio="l" /></noscript>									</a>
+																					
+							<div class="recent-posts-info">
+								<h5 class="entry-title"><a href="https://dcentr77.ru/stati/ekspluatacionnyj-resurs-dachnyh-hozblokov-i-bytovok/" title="Постоянная ссылка к Эксплуатационный ресурс дачных хозблоков и бытовок" rel="bookmark">Эксплуатационный ресурс дачных хозблоков и бытовок</a></h5>
+
+																										<time class="recent-posts-time" datetime="2022-07-22T11:32:05+00:00">22 июля, 2022</time>
+								
+															</div>
+						</li>
+
+											<li>
+																								<a class="recent-posts-thumbnail" href="https://dcentr77.ru/stati/materialy-ispolzuemy-dlya-postrojki-besedok/"  rel="bookmark">
+										<img class="attachment-large wp-post-image  lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtAQAAAAASYd83AAAAAnRSTlMAAHaTzTgAAAANSURBVBjTY2AYBWQCAAE7AAEVTFJqAAAAAElFTkSuQmCC" width="45" height="45" alt="Блокхаус и имитация бруса" title="Блокхаус и имитация бруса" data-src="https://dcentr77.ru/wp-content/uploads/2022/07/Blokhaus-i-imitaciya-brusa-45x45.jpg" decoding="async" /><noscript><img class="attachment-large wp-post-image " src="https://dcentr77.ru/wp-content/uploads/2022/07/Blokhaus-i-imitaciya-brusa-45x45.jpg" width="45" height="45" alt="Блокхаус и имитация бруса" title="Блокхаус и имитация бруса" data-eio="l" /></noscript>									</a>
+																					
+							<div class="recent-posts-info">
+								<h5 class="entry-title"><a href="https://dcentr77.ru/stati/materialy-ispolzuemy-dlya-postrojki-besedok/" title="Постоянная ссылка к Материалы используемые для постройки беседок" rel="bookmark">Материалы используемые для постройки беседок</a></h5>
+
+																										<time class="recent-posts-time" datetime="2022-07-22T10:32:18+00:00">22 июля, 2022</time>
+								
+															</div>
+						</li>
+
+					 
+
+				</ul>
+			
+			</div>					</div><!-- .widget-area -->
+	</div><!-- .sidebar-inner -->
+</aside><!-- .sidebar-container -->
+
+			</div><!-- .main-page-wrapper --> 
+			</div> <!-- end row -->
+	</div> <!-- end container -->
+			
+	<!-- FOOTER -->
+			<footer class="footer-container color-scheme-dark">
+	
+				<div class="container main-footer">
+		<aside class="footer-sidebar widget-area row" role="complementary">
+									<div class="footer-column footer-column-1 col-12 col-sm-4">
+							<div id="text-13" class="woodmart-widget widget footer-widget  widget_text">			<div class="textwidget"><p><a style="color: #fff;" href="/shop/">Каталог</a></p>
+<p><a style="color: #fff;" href="/o-nas/">О нас</a></p>
+<p><a style="color: #fff;" href="/kontakty/">Контакты</a></p>
+<p><a style="color: #fff;" href="/dostavka-i-oplata/">Доставка и оплата</a></p>
+</div>
+		</div>						</div>
+																	<div class="footer-column footer-column-2 col-12 col-sm-4">
+							<div id="text-15" class="woodmart-widget widget footer-widget  widget_text">			<div class="textwidget"><p><a style="color: #fff;" href="/product-category/hozbloki/">Хозблоки</a></p>
+<p><a style="color: #fff;" href="/product-category/besedki/">Беседки</a></p>
+<p><a style="color: #fff;" href="/product-category/volery//">Вольеры</a></p>
+<p><a style="color: #fff;" href="/product-category/tualety/">Туалеты</a></p>
+</div>
+		</div>						</div>
+																	<div class="footer-column footer-column-3 col-12 col-sm-4">
+							<div id="text-12" class="woodmart-widget widget footer-widget  widget_text">			<div class="textwidget"><p><a style="color: #fff;" href="tel:+79031368677">+7 903 136 86 77</a><br />
+<a style="color: #fff;" href="mailto:dcentr7@mail.ru">dcentr7@mail.ru</a></p>
+</div>
+		</div><div id="text-14" class="woodmart-widget widget footer-widget  widget_text">			<div class="textwidget"><p><button style="background: rgba(131, 183, 53, 1);"><a style="color: #fff;" href="https://wa.me/+79096915977">Написать в WhatsApp</a></button></p>
+</div>
+		</div>						</div>
+													</aside><!-- .footer-sidebar -->
+	</div>
+	
+					</footer>
+	</div> <!-- end wrapper -->
+<div class="woodmart-close-side"></div>
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {function showhide_toggle(e,t,r,g){var a=jQuery("#"+e+"-link-"+t),s=jQuery("a",a),i=jQuery("#"+e+"-content-"+t),l=jQuery("#"+e+"-toggle-"+t);a.toggleClass("sh-show sh-hide"),i.toggleClass("sh-show sh-hide").toggle(),"true"===s.attr("aria-expanded")?s.attr("aria-expanded","false"):s.attr("aria-expanded","true"),l.text()===r?(l.text(g),a.trigger("sh-link:more")):(l.text(r),a.trigger("sh-link:less")),a.trigger("sh-link:toggle")}});</script>
+		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<style>.wp-container-2 {display: flex;gap: 0.5em;flex-wrap: wrap;align-items: center;}.wp-container-2 > * { margin: 0; }</style>
+<style> .wp-block-gallery-1{ --wp--style--unstable-gallery-gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) ); gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) )}</style><script   type='text/javascript' id='eio-lazy-load-js-before'>
+var eio_lazy_vars = {"exactdn_domain":"","skip_autoscale":0,"threshold":0};
+</script>
+<script   type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/ewww-image-optimizer/includes/lazysizes.min.js' id='eio-lazy-load-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-includes/js/dist/vendor/regenerator-runtime.min.js' id='regenerator-runtime-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-includes/js/dist/vendor/wp-polyfill.min.js' id='wp-polyfill-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/dcentr77.ru\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1660799542' id='contact-form-7-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js' id='js-cookie-js' defer></script>
+<script type='text/javascript' id='woocommerce-js-extra'>
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js' id='woocommerce-js' defer></script>
+<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_2b882299a4c44d3b5b67fa761c56306b","fragment_name":"wc_fragments_2b882299a4c44d3b5b67fa761c56306b","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js' id='wc-cart-fragments-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/checkout\/|\/cart\/|\/my-account\/|\/wc-api\/v(.*)|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/dcentr77.ru","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js' id='wpb_composer_front_js-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-includes/js/imagesloaded.min.js' id='imagesloaded-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/owl.carousel.min.js' id='woodmart-owl-carousel-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/jquery.tooltips.min.js' id='woodmart-tooltips-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/jquery.magnific-popup.min.js' id='woodmart-magnific-popup-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/waypoints.min.js' id='woodmart-waypoints-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/jquery.nanoscroller.min.js' id='woodmart-nanoscroller-js' defer></script>
+<script type='text/javascript' id='woodmart-theme-js-extra'>
+/* <![CDATA[ */
+var woodmart_settings = {"photoswipe_close_on_scroll":"1","woocommerce_ajax_add_to_cart":"yes","variation_gallery_storage_method":"new","elementor_no_gap":"enabled","adding_to_cart":"\u041e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e","added_to_cart":"\u0422\u043e\u0432\u0430\u0440 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d \u0432 \u043a\u043e\u0440\u0437\u0438\u043d\u0443.","continue_shopping":"\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c \u0448\u043e\u043f\u043f\u0438\u043d\u0433","view_cart":"\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u043a\u043e\u0440\u0437\u0438\u043d\u044b","go_to_checkout":"\u041f\u0440\u043e\u0432\u0435\u0440\u044f\u0442\u044c, \u0432\u044b\u043f\u0438\u0441\u044b\u0432\u0430\u0442\u044c\u0441\u044f","loading":"\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430...","countdown_days":"\u0434\u043d\u0435\u0439","countdown_hours":"\u0447","countdown_mins":"\u043c\u0438\u043d","countdown_sec":"\u0441\u0435\u043a","cart_url":"https:\/\/dcentr77.ru\/cart\/","ajaxurl":"https:\/\/dcentr77.ru\/wp-admin\/admin-ajax.php","add_to_cart_action":"widget","added_popup":"no","categories_toggle":"yes","enable_popup":"no","popup_delay":"2000","popup_event":"time","popup_scroll":"1000","popup_pages":"0","promo_popup_hide_mobile":"no","product_images_captions":"no","ajax_add_to_cart":"0","all_results":"\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0432\u0441\u0435 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b","product_gallery":{"images_slider":true,"thumbs_slider":{"enabled":true,"position":"bottom","items":{"desktop":4,"tablet_landscape":3,"tablet":4,"mobile":3,"vertical_items":3}}},"zoom_enable":"no","ajax_scroll":"yes","ajax_scroll_class":".main-page-wrapper","ajax_scroll_offset":"100","infinit_scroll_offset":"300","product_slider_auto_height":"no","price_filter_action":"click","product_slider_autoplay":"","close":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c (Esc)","share_fb":"\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043d\u0430 Facebook","pin_it":"Pin","tweet":"\u0422\u0432\u0438\u0442\u043d\u0443\u0442\u044c","download_image":"\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435","cookies_version":"1","header_banner_version":"1","promo_version":"1","header_banner_close_btn":"1","header_banner_enabled":"","whb_header_clone":"\n    <div class=\"whb-sticky-header whb-clone whb-main-header <%wrapperClasses%>\">\n        <div class=\"<%cloneClass%>\">\n            <div class=\"container\">\n                <div class=\"whb-flex-row whb-general-header-inner\">\n                    <div class=\"whb-column whb-col-left whb-visible-lg\">\n                        <%.site-logo%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-center whb-visible-lg\">\n                        <%.main-nav%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-right whb-visible-lg\">\n                        <%.woodmart-header-links%>\n                        <%.search-button:not(.mobile-search-icon)%>\n\t\t\t\t\t\t<%.woodmart-wishlist-info-widget%>\n                        <%.woodmart-compare-info-widget%>\n                        <%.woodmart-shopping-cart%>\n                        <%.full-screen-burger-icon%>\n                    <\/div>\n                    <%.whb-mobile-left%>\n                    <%.whb-mobile-center%>\n                    <%.whb-mobile-right%>\n                <\/div>\n            <\/div>\n        <\/div>\n    <\/div>\n","pjax_timeout":"5000","split_nav_fix":"","shop_filters_close":"no","woo_installed":"1","base_hover_mobile_click":"no","centered_gallery_start":"1","quickview_in_popup_fix":"","disable_nanoscroller":"enable","one_page_menu_offset":"150","hover_width_small":"1","is_multisite":"","current_blog_id":"1","swatches_scroll_top_desktop":"","swatches_scroll_top_mobile":"","lazy_loading_offset":"0","add_to_cart_action_timeout":"no","add_to_cart_action_timeout_number":"3","single_product_variations_price":"no","google_map_style_text":"\u0421\u0432\u043e\u0439 \u0441\u0442\u0438\u043b\u044c","quick_shop":"no","sticky_product_details_offset":"150","preloader_delay":"300","comment_images_upload_size_text":"Some files are too large. Allowed file size is 1 \u041c\u0411.","comment_images_count_text":"You can upload up to 3 images to your review.","comment_images_upload_mimes_text":"You are allowed to upload images only in png, jpeg formats.","comment_images_added_count_text":"Added %s image(s)","comment_images_upload_size":"1048576","comment_images_count":"3","comment_images_upload_mimes":{"jpg|jpeg|jpe":"image\/jpeg","png":"image\/png"},"home_url":"https:\/\/dcentr77.ru\/","shop_url":"https:\/\/dcentr77.ru\/shop\/","age_verify":"no","age_verify_expires":"30","cart_redirect_after_add":"no","swatches_labels_name":"no","product_categories_placeholder":"\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044e","product_categories_no_results":"No matches found","cart_hash_key":"wc_cart_hash_2b882299a4c44d3b5b67fa761c56306b","fragment_name":"wc_fragments_2b882299a4c44d3b5b67fa761c56306b"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/functions.min.js' id='woodmart-theme-js' defer></script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' id='woodmart-theme-js-after'>window.addEventListener('DOMContentLoaded', function() {
+                                        jQuery(document).ready(function() {
+                        jQuery( '.variations_form' ).each( function() {
+        jQuery(this).on( 'found_variation', function( event, variation ) {
+					var currency = jQuery('.woocommerce-Price-currencySymbol').text()[0]; 
+          var color = jQuery("select[name='attribute_pa_vybrat-cvet']").find(":selected").val();
+					if (!color) return; 
+					
+					var percent = variation.display_regular_price * 7 / 100;
+					var price = percent+variation.display_regular_price;
+					
+				//	variation.regular_price = price;
+					
+					console.log(variation.display_price);
+        });
+    });
+
+
+
+jQuery('.variations_form .variations tr:last-child td:last-child').prepend("<div class = 'text-var'>нажмите чтобы выбрать другой размер и увидеть цену</div>");
+
+jQuery('.single-product .cpf-type-radio>.tc-element-inner-wrap>.tc-row').prepend("<div class = 'text-var''>нажмите чтобы выбрать нужный цвет.<br> Внимание! К итоговой цене добавится стоимость покраски изделия </div>");
+
+if (jQuery(window).width() > 580) {
+  // Тут код для больших разрешений,
+  // к примеру, с шириной окна с сайтом больше 1280 писелей
+} else {
+  var acc = document.getElementsByClassName("tm-epo-element-label");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+}                });
+                    
+});</script>
+<script type="rocketlazyloadscript"   data-rocket-type='text/javascript' src='https://dcentr77.ru/wp-content/themes/woodmart/js/jquery.autocomplete.min.js' id='woodmart-autocomplete-js' defer></script>
+
+<div id="awooc-form-custom-order" class="awooc-form-custom-order awooc-popup-wrapper" style="display: none">
+	<div class="awooc-close">&#215;</div>
+	<div class="awooc-custom-order-wrap awooc-popup-inner">
+		<h2 class="awooc-form-custom-order-title awooc-popup-title"></h2>		<div class="awooc-col-wrap awooc-row">
+			<div class="awooc-col columns-left ">
+
+				<div class="awooc-form-custom-order-img awooc-popup-image"></div><div class="awooc-form-custom-order-attr awooc-popup-attr"></div><div class="awooc-form-custom-order-sum awooc-popup-sum"></div>
+			</div>
+			<div class="awooc-col columns-right ">
+
+				
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="mobile-nav slide-from-left">			<div class="woodmart-search-form">
+								<form role="search" method="get" class="searchform  woodmart-ajax-search" action="https://dcentr77.ru/"  data-thumbnail="1" data-price="1" data-post_type="product" data-count="20" data-sku="0" data-symbols_count="3">
+					<input type="text" class="s" placeholder="Поиск товаров" value="" name="s" />
+					<input type="hidden" name="post_type" value="product">
+										<button type="submit" class="searchsubmit">
+						Поиск											</button>
+				</form>
+													<div class="search-results-wrapper"><div class="woodmart-scroll"><div class="woodmart-search-results woodmart-scroll-content"></div></div><div class="woodmart-search-loader wd-fill"></div></div>
+							</div>
+		<div class="mobile-menu-tab mobile-pages-menu active"><div class="menu-osnovnoe-container"><ul id="menu-osnovnoe-1" class="site-mobile-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor current-page-parent menu-item-7087 item-level-0"><a href="https://dcentr77.ru/" class="woodmart-nav-link"><span class="nav-link-text">Главная</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7086 item-level-0"><a href="https://dcentr77.ru/shop/" class="woodmart-nav-link"><span class="nav-link-text">Каталог</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10365 current_page_item menu-item-10367 item-level-0"><a href="https://dcentr77.ru/home-base/nashi-raboty/" class="woodmart-nav-link"><span class="nav-link-text">Наши работы</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7559 item-level-0"><a href="https://dcentr77.ru/o-nas/" class="woodmart-nav-link"><span class="nav-link-text">О нас</span></a>
+<div class="sub-menu-dropdown color-scheme-dark">
+
+<div class="container">
+
+<ul class="sub-menu color-scheme-dark">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10364 item-level-1"><a href="https://dcentr77.ru/pochemu-nas-vybirajut/" class="woodmart-nav-link"><span class="nav-link-text">Почему нас выбирают</span></a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7560 item-level-0"><a href="https://dcentr77.ru/dostavka-i-oplata/" class="woodmart-nav-link"><span class="nav-link-text">Доставка и оплата</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7558 item-level-0"><a href="https://dcentr77.ru/kontakty/" class="woodmart-nav-link"><span class="nav-link-text">Контакты</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10973 item-level-0"><a href="https://dcentr77.ru/poleznye-stati/" class="woodmart-nav-link"><span class="nav-link-text">Cтатьи</span></a></li>
+</ul></div></div>
+		</div><!--END MOBILE-NAV-->
+					<a href="#" class="woodmart-sticky-sidebar-opener">
+				<span class="woodmart-sidebar-opener-label">
+					Сайдбар				</span>
+			</a>
+		
+					<a href="#" class="scrollToTop">Прокрутка вверх</a>
+		<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Закрыть (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Поделиться"></button>
+
+                <button class="pswp__button pswp__button--fs" title="На весь экран"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Масштаб +/-"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Пред. (стрелка влево)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="След. (стрелка вправо)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {
+        jQuery(document).ready(function ($) {
+
+            for (let i = 0; i < document.forms.length; ++i) {
+                let form = document.forms[i];
+				if ($(form).attr("method") != "get") { $(form).append('<input type="hidden" name="vTUZHkOaQ" value="muQ1n6*Jd5]WL8" />'); }
+if ($(form).attr("method") != "get") { $(form).append('<input type="hidden" name="uHgUrvVnpa" value="1aUQ4M80x5" />'); }
+if ($(form).attr("method") != "get") { $(form).append('<input type="hidden" name="r_hXvLebkgUx" value="wIsUmMR5BySi*LEk" />'); }
+            }
+
+            $(document).on('submit', 'form', function () {
+				if ($(this).attr("method") != "get") { $(this).append('<input type="hidden" name="vTUZHkOaQ" value="muQ1n6*Jd5]WL8" />'); }
+if ($(this).attr("method") != "get") { $(this).append('<input type="hidden" name="uHgUrvVnpa" value="1aUQ4M80x5" />'); }
+if ($(this).attr("method") != "get") { $(this).append('<input type="hidden" name="r_hXvLebkgUx" value="wIsUmMR5BySi*LEk" />'); }
+                return true;
+            });
+
+            jQuery.ajaxSetup({
+                beforeSend: function (e, data) {
+
+                    if (data.type !== 'POST') return;
+
+                    if (typeof data.data === 'object' && data.data !== null) {
+						data.data.append("vTUZHkOaQ", "muQ1n6*Jd5]WL8");
+data.data.append("uHgUrvVnpa", "1aUQ4M80x5");
+data.data.append("r_hXvLebkgUx", "wIsUmMR5BySi*LEk");
+                    }
+                    else {
+                        data.data = data.data + '&vTUZHkOaQ=muQ1n6*Jd5]WL8&uHgUrvVnpa=1aUQ4M80x5&r_hXvLebkgUx=wIsUmMR5BySi*LEk';
+                    }
+                }
+            });
+
+        });
+    });</script>
+	</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1660906085 -->
